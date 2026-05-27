@@ -307,7 +307,7 @@ class ProcessFramePubSub(Node):
             gate_pose.position.y = e['tvec'][1]/100  # -X_optique → Y_rgb (gauche = -droite)
             gate_pose.position.z = e['tvec'][2]/100   # Y_optique → Z_rgb (bas)
             
-            r = R.from_euler('xyz', e['rvec'], degrees=False)
+            r = R.from_rotvec(e['rvec'])
             _quaternion_optical = r.as_quat()
 
             gate_pose.orientation.x = _quaternion_optical[0]
