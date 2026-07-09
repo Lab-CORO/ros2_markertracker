@@ -110,7 +110,8 @@ class ArucoWrapper:
                 poses_result.append(pose)
 
                 if draw_image is True and image_color is not None:
-                    image_color = aruco.drawAxis(image_color,
+                    # cv2.aruco.drawAxis was removed in OpenCV 4.7 -> cv2.drawFrameAxes
+                    image_color = cv2.drawFrameAxes(image_color,
                                                 self.camera_matrix,
                                                 self.dist_coeffs,
                                                 rvecs[i], tvecs[i],
